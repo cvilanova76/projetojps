@@ -9,6 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidades.Banco;
+import entidades.Pesquisa;
+import servicos.ServicoDoBancoDeDados;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import entidades.Pesquisa;
 import servicos.ServicoDoBancoDeDados;
 
@@ -33,10 +44,11 @@ public class PesquisaInclusaoServlet extends HttpServlet {
 		pesquisa.setCheck2(request.getParameter("p_ck2"));
 		pesquisa.setCheck3(request.getParameter("p_ck3"));
 		pesquisa.setEstadoCivil(request.getParameter("p_estadoCivil"));
+		
 		Pesquisa pesquisaSalva = servicoBd.salvar(pesquisa);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/confirmacao.jsp");
-		request.setAttribute("pesquisa", pesquisaSalva);
+		RequestDispatcher rd = request.getRequestDispatcher("/listarPesquisas.jsp");
+		request.setAttribute("pesquisas", servicoBd.procurarTodos());
 		rd.forward(request, response);
 	}
 

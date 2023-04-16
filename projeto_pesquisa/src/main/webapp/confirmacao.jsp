@@ -1,5 +1,5 @@
 <%@ page import="entidades.Pesquisa"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,9 +10,10 @@
 <body>
 
 	<%
-	Pesquisa pesquisa = (Pesquisa) request.getAttribute("pesquisa");
+		Pesquisa pesquisa = (Pesquisa) request.getAttribute("pesquisa");
 	%>
 	
+	<h1> <%= pesquisa.getId() %></h1>
 	<h1> <%= pesquisa.getNome() %></h1>
 
 </body>
